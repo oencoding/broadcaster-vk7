@@ -1,0 +1,253 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>VK7 News Control</title>
+
+  <link href="bootstrap.min.css" rel="stylesheet"></link>
+  <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">-->
+  <link href="main.css" rel="stylesheet"></link>
+  <link href="bootstrap-datepicker3.standalone.css" rel="stylesheet"></link>
+  <link href="bootstrap-timepicker.min.css" rel="stylesheet"></link>
+  <script src="jquery-2.2.0.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <script src="bootbox.min.js"></script>
+  <script src="demo-code.js"></script>
+  <script src="bootstrap-datepicker.min.js"></script>
+  <script src="bootstrap-timepicker.min.js"></script>
+  
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">VK7 News Control</a>
+        </div>
+        <div id="navbar" class="collapse nav nav-tabs navbar-collapse" role="tablist">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#radio" role="tab" data-toggle="tab" aria-controls="radio">Radio</a></li>
+            <li><a href="#files" role="tab" data-toggle="tab" aria-controls="files">Files</a></li>
+            <li><a href="#schedule" role="tab" data-toggle="tab" aria-controls="schedule">Schedule</a></li>
+            <li><a href="#system" role="tab" data-toggle="tab" aria-controls="system">System</a></li>
+            <li><a href="#users" role="tab" data-toggle="tab" aria-controls="users">Users</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+	    <li><a href="#">Log Out&nbsp;<span class="glyphicon glyphicon-log-out"></span></a></li>
+	  </ul>
+	  <p class="navbar-right navbar-text"><b>Tom VK7NTK</b></p>
+	  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="tab-content">
+      <div role="tabpanel" id="radio" class="tab-pane fade in active">
+
+	<div class="starter-template">
+	
+		<div class="radio-grid">
+			<div class="control-box">
+				<div class="child-box first-col">TX Status</div>
+				<div class="child-box on-air">ON AIR</div>
+				<div class="child-box"><button class="btn btn-danger">Stop TX Now</button></div>
+				<div class="child-box"><button class="btn btn-warning">Lock Out TX</button></div>
+			</div>
+			
+			<div class="control-box">
+				<div class="child-box first-col">IRLP</div>
+				<div class="child-box enabled">ENABLED</div>
+				<div class="child-box"><button class="btn btn-danger">Disable</button></div>
+				<div class="child-box"></div>
+			</div>
+			
+			<div class="control-box">
+				<div class="child-box first-col">Echolink</div>
+				<div class="child-box disabled">DISABLED</div>
+				<div class="child-box"><button class="btn btn-success">Enable</button></div>
+				<div class="child-box"></div>
+			</div>
+		
+		</div>
+		
+		<div class="vertical-spacer"></div>
+		
+		<div class="radio-grid">
+			<div class="control-box">
+				<div class="child-box first-col">File Playing</div>
+				<div class="child-box file-data">vk7-20160101.wav</div>
+				<div class="child-box"></div>
+				<div class="child-box"></div>
+			</div>
+			
+			<div class="control-box">
+				<div class="child-box first-col">Progress</div>
+				<div class="child-box file-data"><span id="progress">00:31</span> / 23:35</div>
+				<div class="child-box"></div>
+				<div class="child-box"></div>
+			</div>
+		
+		</div>
+		
+		</div>
+
+	</div>
+      
+      <div role="tabpanel" id="files" class="fade tab-pane">
+
+	<div class="starter-template">
+		<h3>Uploaded Files</h3>
+		<table class="table">
+			<tr><th>File Name</th><th>Size</th><th>Duration</th><th>Format</th><th>Download</th><th>TX Now</th></tr>
+			<tr>
+				<td>vk7-20160101.wav</td>
+				<td>149.30 MB</td><td>23:35</td><td>WAVE</td>
+				<td><a href="#"><div class="glyphicon glyphicon-download"></div></a></td>
+				<td><a href="#"><div class="glyphicon glyphicon-play-circle"></div></a></td>
+			</tr>
+			<tr>
+				<td>vk7-20160108.wav</td>
+				<td>140.00 MB</td><td>22:40</td><td>WAVE</td>
+				<td><a href="#"><div class="glyphicon glyphicon-download"></div></a></td>
+				<td><a href="#"><div class="glyphicon glyphicon-play-circle"></div></a></td>
+			</tr>
+			<tr>
+				<td>vk7-20160115.wav</td>
+				<td>144.59 MB</td><td>23:01</td><td>WAVE</td>
+				<td><a href="#"><div class="glyphicon glyphicon-download"></div></a></td>
+				<td><a href="#"><div class="glyphicon glyphicon-play-circle"></div></a></td>
+			</tr>
+		</table>
+	</div>
+
+      </div>
+      
+      <div role="tabpanel" id="schedule" class="fade tab-pane">
+
+	<div class="starter-template">
+		<h3>Scheduled Transmissions</h3>
+		<table class="table">
+			<tr><th>Transmission Time</th><th>File Name</th><th>IRLP/Echolink</th><th>Creator</th><th>Edit</th><th>Delete</th></tr>
+			<tr>
+				<td>09:30 1/Jan/2016</td>
+				<td>vk7-20160101.wav</td>
+				<td>Disabled</td>
+				<td>VK7NTK</td>
+				<td><a href="#"><div class="glyphicon glyphicon-edit"></div></a></td>
+				<td>
+					<a href="#" onclick="confirm_delete_schedule()">
+					<div class="glyphicon glyphicon-remove"></div>
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td>09:30 8/Jan/2016</td>
+				<td>vk7-20160108.wav</td>
+				<td>Disabled</td>
+				<td>VK7NTK</td>
+				<td><a href="#"><div class="glyphicon glyphicon-edit"></div></a></td>
+				<td>
+					<a href="#" onclick="confirm_delete_schedule()">
+					<div class="glyphicon glyphicon-remove"></div>
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td>09:30 15/Jan/2016</td>
+				<td>vk7-20160115.wav</td>
+				<td>Disabled</td>
+				<td>VK7TW</td>
+				<td><a href="#"><div class="glyphicon glyphicon-edit"></div></a></td>
+				<td>
+					<a href="#" onclick="confirm_delete_schedule()">
+					<div class="glyphicon glyphicon-remove"></div>
+					</a>
+				</td>
+			</tr>
+		</table>
+		
+		<div class="vertical-spacer-small"></div>
+		
+		<button class="btn btn-primary" data-toggle="modal" data-target="#testmodal">
+			<div class="glyphicon glyphicon-plus-sign"></div>
+			Schedule New Transmission
+		</button>
+	</div>
+
+      </div>
+      
+      <div role="tabpanel" id="system" class="fade tab-pane">
+
+	<div class="starter-template">
+	  <h1>System</h1>
+	  <p>(Textfields and checkboxes and things)</p>
+	</div>
+
+      </div>
+      
+      <div role="tabpanel" id="users" class="fade tab-pane">
+
+	<div class="starter-template">
+	  <h1>Users</h1>
+	  <p>(Users in a table with buttons to perform actions on them)
+	</div>
+
+      </div>
+    </div>
+    
+    <div id="testmodal" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Schedule New Transmission</h4>
+			</div>
+			<div class="modal-body">
+				<!-- pick a file -->
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="new-schedule-file" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						<span id="selected-filename">Select file for playback</span>
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="new-schedule-file">
+					<li><a href="#" onclick="choose_file('vk7-20160101.wav')">vk7-20160101.wav</a></li>
+					<li><a href="#" onclick="choose_file('vk7-20160108.wav')">vk7-20160108.wav</a></li>
+					<li><a href="#" onclick="choose_file('vk7-20160115.wav')">vk7-20160115.wav</a></li>
+					<ul>
+				</div>
+				
+				<div class="vertical-spacer-small"></div>
+				
+				<!-- pick a date -->
+				<input type="text" id="new-schedule-date" class="form-control" ></input>
+				
+				<div class="vertical-spacer-small"></div>
+				
+				<!-- pick a time -->
+				<input type="text" id="new-schedule-time" class="form-control"></input>
+				
+				<!-- should we disable IRLP and echolink? -->
+				<div class="checkbox">
+					<label><input type="checkbox" value="Disable">Disable IRLP and Echolink during transmission?</label>
+				</div>
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">5x9 THX OM</button>
+			</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+

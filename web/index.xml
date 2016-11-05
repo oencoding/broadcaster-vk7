@@ -1,0 +1,8 @@
+<html xmlns:t="http://twistedmatrix.com/ns/twisted.web.template/0.1">
+<body>
+  <h1>Files</h1>
+  <ul>
+    <li t:render="files"><a><t:attr name="href"><t:slot name="path"/></t:attr><t:slot name="filename"/></a></li>
+  </ul>
+</body>
+</html>

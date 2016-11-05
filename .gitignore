@@ -1,0 +1,8 @@
+.DS_Store
+files/*.wav
+files/*.mp3
+*.pyc
+*~
+config/settings.cfg
+config/schedule.dat
+

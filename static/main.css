@@ -1,0 +1,102 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: left;
+}
+
+.tab-content {
+	max-width: 600px;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h3 {
+	margin-bottom: 1em;
+}
+
+.control-box {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-end;
+	margin-bottom: 1em;
+}
+
+.child-box {
+	/*border: 1px solid black;*/
+	width: 25%;
+	margin: auto;
+	text-align: center;
+}
+
+.on-air {
+	font-weight: bold;
+	color: white;
+	background-color: green;
+}
+
+.enabled {
+	color: green;
+}
+
+.disabled {
+	color: gray;
+}
+
+.vertical-spacer {
+	height: 2em;
+}
+
+.vertical-spacer-small {
+	height: 1em;
+}
+
+.file-data {
+	font-style: italic;
+}
+
+.first-col {
+	font-weight: bold;
+}
+
+#files td,th {
+	text-align: center;
+}
+
+#schedule td,th {
+	text-align: center;
+}
+
+.glyphicon-download,.glyphicon-edit,.glyphicon-play-circle {
+	color: #3300FF;
+}
+
+.glyphicon-remove {
+	color: red;
+}
+
+.glyphicon.playlist {
+    width: 40px;
+}
+
+.dropdown-toggle {
+    width: calc(100% - 40px);
+}
+
+.gap {
+    width: calc(100% - 40px);
+}
+
+.modal-body .form-control {
+    display: inline-block;
+}
+
+td .glyphicon {
+	font-size: 125%;
+}
+
+.hidden {
+    display: none;
+}
