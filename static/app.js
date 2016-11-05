@@ -12,23 +12,23 @@ $(document).ready(function() {
 		$("#selected-filename").html('Select file for playback');
         files_cache = null;
 	});
-    
+
     $("#testmodal").on('show.bs.modal', function(e) {
         if (e.target.id != "testmodal") return;
         $(".playlist-item").remove();
         $(".playlist-spacer").remove();
         updateFilesCache();
     });
-    
+
     $(document).on("click", ".playlist-remove", null, function(event) {
         removeItemFromPlaylist(event);
     });
-	
+
 	$('#new-schedule-date').datepicker({
 		format: 'dd/mm/yyyy',
 		autoclose: true
-	});
-	
+	}).datepicker('setDate', new Date());
+
 	$('#new-schedule-time').timepicker({
 		template: false,
 		showInputs: false,
@@ -52,7 +52,7 @@ function do_radio_status_update() {
         updatePlaybackState(s.playback_status);
         updatePlayingFile(s.file_playing);
         updatePlaybackProgress(s.progress);
-        
+
         setTimeout(function() {
             do_radio_status_update();
         }, 1000);
@@ -66,7 +66,7 @@ function updateInternetFunctionState(name, state) {
     var stateDiv = $("#" + name + "-state");
     var enableButton = $("#" + name + "-enable");
     var disableButton = $("#" + name + "-disable");
-    
+
     if (state) {
         stateDiv.removeClass("disabled").addClass("enabled");
         stateDiv.text("ENABLED");
@@ -74,7 +74,7 @@ function updateInternetFunctionState(name, state) {
         stateDiv.addClass("disabled").removeClass("enabled");
         stateDiv.text("DISABLED");
     }
-    
+
     if (state) {
         enableButton.hide();
         disableButton.show();
@@ -87,7 +87,7 @@ function updateInternetFunctionState(name, state) {
 function updatePTTState(state) {
     var el = $("#ptt-state");
     var stopTx = $("#stop-tx");
-    
+
     if (state) {
         el.removeClass("disabled").addClass("on-air").text("ON AIR");
         stopTx.css('visibility', 'visible');
@@ -145,7 +145,7 @@ function disableEcholinkClicked() {
 
 function addFileToPlaylist() {
     var name = Math.floor((Math.random() * 100000));
-    
+
     var code = '<div class="dropdown playlist-item"> \
                     <button class="btn btn-default dropdown-toggle" type="button" id="' + name + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> \
                         <span class="selected-filename">Select file for playback</span>\
@@ -220,9 +220,9 @@ function addFilesForUl(ul) {
 }
 
 function submitPlaylist() {
-    
+
     var itemFilenames = []
-       
+
     $(document).find(".playlist-item").each(function(index, i) {
         console.log(i)
         if ($(i).hasClass("dropdown")) {
@@ -238,17 +238,17 @@ function submitPlaylist() {
             itemFilenames.push(":GAP:" + $(i).find("input").val());
         }
     });
-    
+
     var date = $("#new-schedule-date").val();
     var time = $("#new-schedule-time").val();
-        
+
     // Should validate and maybe show an error instead of hiding
-    
+
     var new_schedule = {};
     new_schedule.playlist = itemFilenames;
     new_schedule.date = date;
     new_schedule.time = time;
-    
+
     $.post("/schedule/new", JSON.stringify(new_schedule), function(data, status) {
         refreshSchedules();
     });
@@ -302,4 +302,3 @@ function confirmDeleteSchedule(item) {
         }
     });
 }
-
