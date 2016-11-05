@@ -165,12 +165,12 @@ class Player(object):
             self._playing_process = subprocess.Popen(
                 ["mpg123", "-m", "-s", "-r", "44100", self._playing_audio.path()],
                 stdout=subprocess.PIPE)
-            p2 = subprocess.Popen("play -t raw -e signed-integer -r 44100 -b 16 -c 1 - compand 0.1,0.3 -60,-60,-30,-15,-20,-12,-4,-8,-2,-7 -4".split(),
+            p2 = subprocess.Popen("play --buffer 2048 -t raw -e signed-integer -r 44100 -b 16 -c 1 - compand 0.1,0.3 -60,-60,-30,-15,-20,-12,-4,-8,-2,-7 -6".split(),
                 stdin=self._playing_process.stdout, stdout=subprocess.PIPE)
             self._playing_process.stdout.close()
         else: # at least attempt as wave
             self._playing_process = subprocess.Popen(
-                ['play', self._playing_audio.path()] + "compand 0.1,0.3 -60,-60,-30,-15,-20,-12,-4,-8,-2,-7 -4".split())
+                ['play', '--buffer', '2048', self._playing_audio.path()] + "compand 0.1,0.3 -60,-60,-30,-15,-20,-12,-4,-8,-2,-7 -6".split())
 
     def _stop_audio(self):
         if self._playing_process != None:
