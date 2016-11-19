@@ -179,7 +179,7 @@ class Player(object):
             self._playing_process = None
 
     def tick(self):
-        if self._playing_now:
+        if self._playing_now and self._playing_process != None:
             if self._playing_process.poll() != None:
                 print("naturally finished")
                 # Finished playing naturally
