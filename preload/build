@@ -1,0 +1,1 @@
+gcc -Wall -O2 -fpic -shared -ldl `pkg-config --cflags glib-2.0` -o gpio_override.so gpio_override.c `pkg-config --libs glib-2.0`
