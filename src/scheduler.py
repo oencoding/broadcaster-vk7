@@ -72,7 +72,11 @@ class Scheduler(object):
         item = ScheduledItem()
         for f in json_dict["playlist"]:
             if f.startswith(":GAP:"):
-                seconds = int(f[5:])
+                seconds = 0
+                try:
+                    seconds = int(f[5:])
+                except ValueError:
+                    seconds = 5 # sensible default
                 gap = Gap(seconds)
                 item.playlist.append(gap)
             elif f.startswith(":INETON:"):
