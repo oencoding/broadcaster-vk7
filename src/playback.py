@@ -162,11 +162,11 @@ class Player(object):
         # Give the repeater a moment to key up
         time.sleep(0.5)
         if self._playing_audio.is_mp3():
-            self._playing_process = subprocess.Popen(
+            p1 = subprocess.Popen(
                 ["mpg123", "-m", "-s", "-r", "44100", self._playing_audio.path()],
                 stdout=subprocess.PIPE)
-            p2 = subprocess.Popen("play --buffer 2048 -t raw -e signed-integer -r 44100 -b 16 -c 1 - compand 0.1,0.3 -60,-60,-30,-20,-20,-15,-4,-8,-2,-7 -2".split(),
-                stdin=self._playing_process.stdout, stdout=subprocess.PIPE)
+            self._playing_process = subprocess.Popen("play --buffer 2048 -t raw -e signed-integer -r 44100 -b 16 -c 1 - compand 0.1,0.3 -60,-60,-30,-20,-20,-15,-4,-8,-2,-7 -2".split(),
+                stdin=p1.stdout, stdout=subprocess.PIPE)
             self._playing_process.stdout.close()
         else: # at least attempt as wave
             self._playing_process = subprocess.Popen(
