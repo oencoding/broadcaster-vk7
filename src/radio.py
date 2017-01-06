@@ -30,7 +30,7 @@ class Radio(object):
         self._ptt_lock = False
         self._channel_clear = False
         self._clear_count = 0
-        self._mark_not_transmitting()
+        self._enable_dtmf()
     
     # Public
     
@@ -66,7 +66,7 @@ class Radio(object):
     
     def ptt_on(self):
         print("PTT ON")
-        self._mark_transmitting()
+        self._disable_dtmf()
         if (not self.ptt_locked_out()) and self.channel_clear():
             self._run_bin("key")
             return True
@@ -75,7 +75,7 @@ class Radio(object):
     
     def ptt_off(self):
         print("PTT OFF")
-        self._mark_not_transmitting()
+        self._enable_dtmf()
         self._run_bin("unkey")
     
     def irlp_on(self):
@@ -128,13 +128,13 @@ class Radio(object):
         script_path = os.path.join(self._root, "features", "EchoIRLP", "scripts", command)
         return subprocess.call([script_path])
 
-    def _mark_transmitting(self):
-        path = os.path.join(self._root, "local", "web_tx")
-        open(path, 'a').close()
+    def _disable_dtmf(self):
+        # This daemon will shut off PTT if it detects a transmission going for longer than 5 mins
+        subprocess.call(["killall", "dtmf"])
     
-    def _mark_not_transmitting(self):
-        path = os.path.join(self._root, "local", "web_tx")
-        try:
-            os.remove(path)
-        except OSError:
-            pass
+    def _enable_dtmf(self):
+        # Enable DTMF listening again
+        # The process can run multiple times so make sure it isn't already running
+        if not "dtmf" in subprocess.check_output(["ps", "waux"]):
+            dtmf_path = os.path.join(self._root, "bin", "dtmf")
+            subprocess.call([dtmf_path])
