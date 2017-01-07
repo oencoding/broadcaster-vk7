@@ -140,7 +140,7 @@ class ScheduleList(ScheduleLeaf):
             s_item = {}
             s_item["identifier"] = i.identifier
             s_item["playlist"] = [str(e) for e in i.playlist]
-            s_item["timestamp_string"] = i.start_time.strftime("%I:%M %p %d/%m/%Y")
+            s_item["timestamp_string"] = i.start_time.strftime("%I:%M:%S %p %d/%m/%Y")
             s_list.append(s_item)
         return json.dumps(s_list, sort_keys=True, indent=4)
     

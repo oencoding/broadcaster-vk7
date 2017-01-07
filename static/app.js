@@ -32,7 +32,8 @@ $(document).ready(function() {
 	$('#new-schedule-time').timepicker({
 		template: false,
 		showInputs: false,
-		minuteStep: 5
+		minuteStep: 1,
+        showSeconds: true
 	});
 
     do_radio_status_update();

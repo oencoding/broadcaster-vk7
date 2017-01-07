@@ -87,7 +87,7 @@ class Scheduler(object):
                 a = playback.AudioFile("../files/%s" % f)
                 item.playlist.append(a)
         timestamp = json_dict["date"] + " " + json_dict["time"]
-        date = datetime.strptime(timestamp, "%d/%m/%Y %I:%M %p")
+        date = datetime.strptime(timestamp, "%d/%m/%Y %I:%M:%S %p")
         item.start_time = date
         # If it was scheduled in the past, do not mark it pending
         item.pending = datetime.now() < item.start_time
